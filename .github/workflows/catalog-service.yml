@@ -5,9 +5,9 @@ on:
     paths:
       - catalog-service/**
     branches:
-      - 'master'
+      - 'main'
   pull_request:
-    branches: [master]
+    branches: [main]
 
 jobs:
   build:
