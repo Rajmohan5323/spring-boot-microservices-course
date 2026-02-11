@@ -7,7 +7,7 @@ on:
     branches:
       - '**'
 
-cdjobs:
+jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
