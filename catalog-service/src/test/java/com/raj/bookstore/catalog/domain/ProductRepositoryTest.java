@@ -15,9 +15,9 @@ import org.testcontainers.utility.TestcontainersConfiguration;
 @DataJpaTest(
         properties = {
             "spring.test.database.replace=none",
-            // "spring.datasource.url=jdbc:tc:postgresql:18-alpine:///db",
+             "spring.datasource.url=jdbc:tc:postgresql:18-alpine:///db",
         })
-@Import(TestcontainersConfiguration.class)
+//@Import(TestcontainersConfiguration.class)
 @Sql("/test-data.sql")
 public class ProductRepositoryTest {
     @Autowired
