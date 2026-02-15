@@ -7,17 +7,15 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.data.jpa.test.autoconfigure.DataJpaTest;
-import org.springframework.context.annotation.Import;
 import org.springframework.test.context.jdbc.Sql;
-import org.testcontainers.utility.TestcontainersConfiguration;
 // Unit Test
 
 @DataJpaTest(
         properties = {
             "spring.test.database.replace=none",
-             "spring.datasource.url=jdbc:tc:postgresql:18-alpine:///db",
+            "spring.datasource.url=jdbc:tc:postgresql:18-alpine:///db",
         })
-//@Import(TestcontainersConfiguration.class)
+// @Import(TestcontainersConfiguration.class)
 @Sql("/test-data.sql")
 public class ProductRepositoryTest {
     @Autowired

@@ -20,6 +20,7 @@ class ProductController {
     @GetMapping
     PagedResult<Product> getProducts(@RequestParam(name = "page", defaultValue = "1") int pageNo) {
         // log.info("Fetching products for page: {}", pageNo);
+        System.out.println("hellow");
         return productService.getProducts(pageNo);
     }
 
