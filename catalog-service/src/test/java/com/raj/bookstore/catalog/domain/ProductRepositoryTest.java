@@ -11,10 +11,7 @@ import org.springframework.test.context.jdbc.Sql;
 // Unit Test
 
 @DataJpaTest(
-        properties = {
-            "spring.test.database.replace=none",
-            "spring.datasource.url=jdbc:tc:postgresql:18-alpine:///db",
-        })
+        properties = {"spring.test.database.replace=none", "spring.datasource.url=jdbc:tc:postgresql:18-alpine:///db"})
 // @Import(TestcontainersConfiguration.class)
 @Sql("/test-data.sql")
 public class ProductRepositoryTest {
