@@ -1,7 +1,7 @@
 package com.raj.bookstore.orders.domain;
 
-//import com.raj.bookstore.orders.clients.catalog.Product;
-//import com.raj.bookstore.orders.clients.catalog.ProductServiceClient;
+import com.raj.bookstore.orders.clients.catalog.Product;
+import com.raj.bookstore.orders.clients.catalog.ProductServiceClient;
 import com.raj.bookstore.orders.domain.models.CreateOrderRequest;
 import com.raj.bookstore.orders.domain.models.OrderItem;
 import java.util.Set;
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 class OrderValidator {
     private static final Logger log = LoggerFactory.getLogger(OrderValidator.class);
 
-    /*private final ProductServiceClient client;
+    private final ProductServiceClient client;
 
     OrderValidator(ProductServiceClient client) {
         this.client = client;
@@ -32,5 +32,5 @@ class OrderValidator {
                 throw new InvalidOrderException("Product price not matching");
             }
         }
-    }*/
+    }
 }
