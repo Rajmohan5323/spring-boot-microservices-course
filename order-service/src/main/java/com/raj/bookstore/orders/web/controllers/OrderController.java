@@ -1,10 +1,14 @@
 package com.raj.bookstore.orders.web.controllers;
 
+import com.raj.bookstore.orders.domain.OrderNotFoundException;
 import com.raj.bookstore.orders.domain.OrderService;
 import com.raj.bookstore.orders.domain.SecurityService;
 import com.raj.bookstore.orders.domain.models.CreateOrderRequest;
 import com.raj.bookstore.orders.domain.models.CreateOrderResponse;
+import com.raj.bookstore.orders.domain.models.OrderDTO;
+import com.raj.bookstore.orders.domain.models.OrderSummary;
 import jakarta.validation.Valid;
+import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -25,9 +29,24 @@ public class OrderController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     CreateOrderResponse createOrder(@Valid @RequestBody CreateOrderRequest request) {
-
         String userName = securityService.getLoginUserName();
         log.info("Creating order for user: {}", userName);
         return orderService.createOrder(userName, request);
+    }
+
+    @GetMapping
+    List<OrderSummary> getOrders() {
+        String userName = securityService.getLoginUserName();
+        log.info("Getting orders for user: {}", userName);
+        return orderService.findOrders(userName);
+    }
+
+    @GetMapping("/{orderNumber}")
+    OrderDTO getOrder(@PathVariable(value = "orderNumber") String orderNumber) {
+        String userName = securityService.getLoginUserName();
+        log.info("Getting order details for user: {}, orderNumber: {}", userName, orderNumber);
+        return orderService
+                .findUserOrder(userName, orderNumber)
+                .orElseThrow(() -> new OrderNotFoundException("Order not found with orderNumber:" + orderNumber));
     }
 }

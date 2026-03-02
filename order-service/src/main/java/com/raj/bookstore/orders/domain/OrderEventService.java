@@ -2,13 +2,12 @@ package com.raj.bookstore.orders.domain;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.raj.bookstore.orders.domain.models.OrderCancelledEvent;
 import com.raj.bookstore.orders.domain.models.*;
+import com.raj.bookstore.orders.domain.models.OrderCancelledEvent;
 import com.raj.bookstore.orders.domain.models.OrderDeliveredEvent;
 import com.raj.bookstore.orders.domain.models.OrderErrorEvent;
 import com.raj.bookstore.orders.domain.models.OrderEventType;
 import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Sort;
@@ -44,7 +43,7 @@ public class OrderEventService {
     }
 
     void save(OrderDeliveredEvent event) {
-        OrderEventEntity orderEvent =   new OrderEventEntity();
+        OrderEventEntity orderEvent = new OrderEventEntity();
         orderEvent.setEventId(event.eventId());
         orderEvent.setEventType(OrderEventType.ORDER_DELIVERED);
         orderEvent.setOrderNumber(event.orderNumber());

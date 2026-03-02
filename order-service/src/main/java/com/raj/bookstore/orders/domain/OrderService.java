@@ -1,11 +1,6 @@
 package com.raj.bookstore.orders.domain;
 
-import com.raj.bookstore.orders.domain.models.CreateOrderRequest;
-import com.raj.bookstore.orders.domain.models.CreateOrderResponse;
-import com.raj.bookstore.orders.domain.models.OrderCreatedEvent;
-import com.raj.bookstore.orders.domain.models.OrderDTO;
-import com.raj.bookstore.orders.domain.models.OrderStatus;
-import com.raj.bookstore.orders.domain.models.OrderSummary;
+import com.raj.bookstore.orders.domain.models.*;
 import java.util.List;
 import java.util.Optional;
 import org.slf4j.Logger;
@@ -39,8 +34,16 @@ public class OrderService {
         orderEventService.save(orderCreatedEvent);
         return new CreateOrderResponse(savedOrder.getOrderNumber());
     }
+    /* Wothout Native Query
+      public List<OrderSummary> findOrders(String userName) {
+        List<OrderEntity> orders = orderRepository.findByUserName(userName);
+        return orders.stream()
+                .map(order -> new OrderSummary(order.getUserName(),order.getStatus()))
+                .toList();
+    }*/
 
-  /*  public List<OrderSummary> findOrders(String userName) {
+    // With Native Query
+    public List<OrderSummary> findOrders(String userName) {
         return orderRepository.findByUserName(userName);
     }
 
@@ -48,7 +51,7 @@ public class OrderService {
         return orderRepository
                 .findByUserNameAndOrderNumber(userName, orderNumber)
                 .map(OrderMapper::convertToDTO);
-    }*/
+    }
 
     public void processNewOrders() {
         List<OrderEntity> orders = orderRepository.findByStatus(OrderStatus.NEW);

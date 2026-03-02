@@ -1,11 +1,8 @@
 package com.raj.bookstore.orders.domain;
 
 import com.raj.bookstore.orders.ApplicationProperties;
-//import com.sivalabs.bookstore.orders.domain.models.OrderCancelledEvent;
 import com.raj.bookstore.orders.domain.models.OrderCancelledEvent;
 import com.raj.bookstore.orders.domain.models.OrderCreatedEvent;
-//import com.sivalabs.bookstore.orders.domain.models.OrderDeliveredEvent;
-//import com.sivalabs.bookstore.orders.domain.models.OrderErrorEvent;
 import com.raj.bookstore.orders.domain.models.OrderDeliveredEvent;
 import com.raj.bookstore.orders.domain.models.OrderErrorEvent;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;

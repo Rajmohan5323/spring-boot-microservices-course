@@ -2,7 +2,6 @@ package com.raj.bookstore.orders.domain;
 
 import com.raj.bookstore.orders.domain.models.OrderEventType;
 import jakarta.persistence.*;
-
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
@@ -80,8 +79,7 @@ class OrderItemEntity {
 
     @Entity
     @Table(name = "order_events")
-    static
-    class OrderEventEntity {
+    static class OrderEventEntity {
         @Id
         @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "order_event_id_generator")
         @SequenceGenerator(name = "order_event_id_generator", sequenceName = "order_event_id_seq")

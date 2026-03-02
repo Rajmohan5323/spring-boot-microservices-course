@@ -1,4 +1,5 @@
 package com.raj.bookstore.orders.domain;
+
 import com.raj.bookstore.orders.domain.models.OrderEventType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
