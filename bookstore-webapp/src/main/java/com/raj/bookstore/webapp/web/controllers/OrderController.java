@@ -6,7 +6,6 @@ import jakarta.annotation.Nonnull;
 import jakarta.validation.Valid;
 import java.util.List;
 import java.util.Map;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -19,7 +18,7 @@ class OrderController {
     private final OrderServiceClient orderServiceClient;
     private final SecurityHelper securityHelper;
 
-    OrderController(OrderServiceClient orderServiceClient , SecurityHelper securityHelper) {
+    OrderController(OrderServiceClient orderServiceClient, SecurityHelper securityHelper) {
         this.orderServiceClient = orderServiceClient;
         this.securityHelper = securityHelper;
     }
@@ -51,7 +50,7 @@ class OrderController {
     @ResponseBody
     OrderDTO getOrder(@PathVariable String orderNumber) {
         log.info("Fetching order details for orderNumber: {}", orderNumber);
-        return orderServiceClient.getOrder(getHeaders(),orderNumber);
+        return orderServiceClient.getOrder(getHeaders(), orderNumber);
     }
 
     @GetMapping("/api/orders")
@@ -61,9 +60,8 @@ class OrderController {
         return orderServiceClient.getOrders(getHeaders());
     }
 
-     private Map<String, ?> getHeaders() {
+    private Map<String, ?> getHeaders() {
         String accessToken = securityHelper.getAccessToken();
         return Map.of("Authorization", "Bearer " + accessToken);
     }
-
 }

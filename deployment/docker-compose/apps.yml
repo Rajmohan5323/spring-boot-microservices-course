@@ -6,7 +6,6 @@ services:
     container_name: catalog-service
     environment:
       - SPRING_PROFILES_ACTIVE=docker
-      # SPRING_DATASOURCE_URL=jdbc:postgresql://catalog-db:5432/postgres
       - DB_URL=jdbc:postgresql://catalog-db:5432/postgres
       - DB_USERNAME=postgres
       - DB_PASSWORD=postgres
@@ -27,7 +26,7 @@ services:
     environment:
       - SPRING_PROFILES_ACTIVE=docker
       - ORDERS_CATALOG_SERVICE_URL=http://api-gateway:8989/catalog
-#      - ORDERS_CATALOG_SERVICE_URL=http://catalog-service:8081
+#      - ORDERS_CATALOG_SERVICE_URL=http://catalog-service:8081  After API Gateway Implementation using API Gateway URL instead of direct service URL
       - DB_URL=jdbc:postgresql://orders-db:5432/postgres
       - DB_USERNAME=postgres
       - DB_PASSWORD=postgres
@@ -35,7 +34,7 @@ services:
       - RABBITMQ_PORT=5672
       - RABBITMQ_USERNAME=guest
       - RABBITMQ_PASSWORD=guest
-#      - OAUTH2_SERVER_URL=http://keycloak:9191
+      - OAUTH2_SERVER_URL=http://keycloak:9191
 #      - SWAGGER_API_GATEWAY_URL=http://api-gateway:8989/orders
 #      - MANAGEMENT_TRACING_ENABLED=${MANAGEMENT_TRACING_ENABLED}
 #      - MANAGEMENT_ZIPKIN_TRACING_ENDPOINT=http://tempo:9411
@@ -114,7 +113,7 @@ services:
     environment:
       - SPRING_PROFILES_ACTIVE=docker
       - BOOKSTORE_API_GATEWAY_URL=http://api-gateway:8989
-#      - OAUTH2_SERVER_URL=http://keycloak:9191
+      - OAUTH2_SERVER_URL=http://keycloak:9191
 #      - MANAGEMENT_TRACING_ENABLED=${MANAGEMENT_TRACING_ENABLED}
 #      - MANAGEMENT_ZIPKIN_TRACING_ENDPOINT=http://tempo:9411
     ports:

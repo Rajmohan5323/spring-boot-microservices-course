@@ -10,6 +10,18 @@ import org.testcontainers.utility.DockerImageName;
 @TestConfiguration(proxyBeanMethods = false)
 class TestcontainersConfiguration {
 
+    /*static String KEYCLOAK_IMAGE = "quay.io/keycloak/keycloak:26.3.0";
+    static String realmImportFile = "/bookstore-realm.json";
+    static String realmName = "bookstore";*/
+    /*static WireMockContainer wiremockServer = new WireMockContainer("wiremock/wiremock:3.5.2-alpine");
+
+    @Bean
+    WireMockContainer wiremockServer() {
+        wiremockServer.start();
+        configureFor(wiremockServer.getHost(), wiremockServer.getPort());
+        return wiremockServer;
+    }*/
+
     @Bean
     @ServiceConnection
     PostgreSQLContainer<?> postgresContainer() {
@@ -21,4 +33,20 @@ class TestcontainersConfiguration {
     RabbitMQContainer rabbitContainer() {
         return new RabbitMQContainer(DockerImageName.parse("rabbitmq:4.0.4-alpine"));
     }
+
+    /* @Bean
+    KeycloakContainer keycloak() {
+        return new KeycloakContainer(KEYCLOAK_IMAGE).withRealmImportFile(realmImportFile);
+    }
+
+    @Bean
+    DynamicPropertyRegistrar dynamicPropertyRegistrar(WireMockContainer wiremockServer, KeycloakContainer keycloak) {
+        return (registry) -> {
+            registry.add("orders.catalog-service-url", wiremockServer::getBaseUrl);
+            registry.add(
+                    "spring.security.oauth2.resourceserver.jwt.issuer-uri",
+                    () -> keycloak.getAuthServerUrl() + "/realms/" + realmName);
+        };
+    }*/
+
 }
