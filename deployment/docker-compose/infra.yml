@@ -111,10 +111,10 @@ services:
       - ./realm-config:/opt/keycloak/data/import
     environment:
       - KEYCLOAK_ADMIN=admin
-      - KEYCLOAK_ADMIN_PASSWORD=admin1234
+      - KEYCLOAK_ADMIN_PASSWORD=admin123
     ports:
       - "9191:9191"
     deploy:
       resources:
         limits:
-          memory: 2gb
+          memory: 1gb
